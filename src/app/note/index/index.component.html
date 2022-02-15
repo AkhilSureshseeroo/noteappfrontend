@@ -1,0 +1,25 @@
+
+<div class="container">
+  <h1>Notes app</h1>
+
+  <a href="#" routerLink="/note/create/" class="btn btn-success">Create New Note</a>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>ID</th>
+      <th>NoteTitle</th>
+      <th>Note Description</th>
+      <th width="220px">Action</th>
+    </tr>
+    <tr *ngFor="let note of notes">
+      <td>{{ note._id}}</td>
+      <td>{{ note.Title }}</td>
+      <td>{{ note.Description }}</td>
+      <td>
+        <a href="#" [routerLink]="['/note/', note._id, 'view']" class="btn btn-info">View</a>
+        <a href="#" [routerLink]="['/note/', note._id, 'edit']" class="btn btn-primary">Edit</a>
+        <button type="button" (click)="deleteNote(note._id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -13,16 +13,18 @@ export class RegisterComponent implements OnInit {
   };
   isSuccessful = false;
   isRegisterFailed = false;
-  errorMessage = '';
+  errorMessage = 'not working';
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
   }
   onSubmit():void{
+    debugger
     const{username,userphone,password}=this.form;
     this.authService.register(username,userphone,password).subscribe({
       next:data =>{
+
         console.log(data);
         this.isSuccessful=true;
         this.isRegisterFailed=false;

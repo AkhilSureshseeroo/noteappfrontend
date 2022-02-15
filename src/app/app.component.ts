@@ -16,9 +16,9 @@ export class AppComponent {
     this.isLoggedin = !!this.tokenService.getToken();
     if (this.isLoggedin) {
       const user = this.tokenService.getUser();
-      this.roles = user.roles;
+      this.roles = user;
 
-      this.username = user.username;
+      // this.username = user.username;
     }
   }
   logout(): void {

@@ -23,11 +23,19 @@ export class TokenService {
     window.sessionStorage.setItem(USER_KEY,JSON.stringify(user));
   }
   public getUser():any{
+
     const user=window.sessionStorage.getItem(USER_KEY);
+    // const user=localStorage.getItem('auth-user')
     if(user){
-      return JSON.parse(user);
+
+      console.log(user)
+      // return JSON.parse(user);
+      return user;
     }
-    return{};
+    else{
+      return null;
+    }
+
   }
 
 }

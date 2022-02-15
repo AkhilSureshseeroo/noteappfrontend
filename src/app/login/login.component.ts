@@ -20,19 +20,22 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.token.getToken()){
+      debugger
       this.isLoggedin = true;
-      this.roles = this.token.getUser().roles;
+      this.roles = this.token.getUser();
+      console.log(this.roles)
     }
   }
   onSubmit():void{
     const{username,password}=this.form;
     this.authService.login(username,password).subscribe({
       next:data =>{
-        this.token.saveToken(data.accessToken);
-        this.token.saveUser(data);
+        debugger
+        this.token.saveToken(data.userAuthToken);
+        this.token.saveUser(data.logginedUser.username);
         this.isLoginfailed = false;
         this.isLoggedin = true;
-        this.roles = this.token.getUser().roles;
+        // this.roles = this.token.getUser();
         this.reloadPage();
       },
       error: err => {
